@@ -13,7 +13,12 @@ class SesionMigration extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('sesion', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('id_usuario');
+            $table->date('fecha_login');
+            $table->date('fecha_logout');
+        });
     }
 
     /**
@@ -23,6 +28,6 @@ class SesionMigration extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('sesion');
     }
 }

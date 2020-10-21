@@ -13,7 +13,15 @@ class OfertaMigration extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('oferta', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('id_videojuego_ofertado');
+            $table->foreignId('id_videojuego_demandado');
+            $table->date('fecha_creacion');
+            $table->date('fecha_modificacion');
+            $table->string('estatus_oferta');
+            $table->string('modalidad_oferta');
+        });
     }
 
     /**
@@ -23,6 +31,6 @@ class OfertaMigration extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('oferta');
     }
 }

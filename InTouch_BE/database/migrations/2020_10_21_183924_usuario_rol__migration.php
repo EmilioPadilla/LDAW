@@ -13,7 +13,11 @@ class UsuarioRolMigration extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('usuario_rol', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('id_usuario');
+            $table->foreignId('id_rol');
+        });
     }
 
     /**
@@ -23,6 +27,6 @@ class UsuarioRolMigration extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('usuario_rol');
     }
 }
